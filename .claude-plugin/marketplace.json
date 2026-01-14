@@ -1,0 +1,48 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "agent-plugins",
+  "version": "1.0.0",
+  "description": "Directory of Claude Code extensions including development tools, productivity plugins, and MCP integrations",
+  "owner": {
+    "name": "saru",
+    "email": "contact@saru.id"
+  },
+  "plugins": [
+    {
+      "name": "dart-lsp",
+      "description": "Dart/Flutter language server for advanced code analysis",
+      "version": "1.0.0",
+      "author": {
+        "name": "saru",
+        "email": "contact@saru.id"
+      },
+      "source": "./plugins/dart-lsp",
+      "category": "development",
+      "strict": false,
+      "lspServers": {
+        "dart": {
+          "command": "dart",
+          "args": [
+            "language-server",
+            "--protocol=lsp",
+            "--client-id=agent-plugins.dart-lsp",
+            "--client-version=1.0.0",
+            "--instrumentation-log-file",
+            "${CLAUDE_PLUGIN_LSP_LOG_FILE}"
+          ],
+          "extensionToLanguage": {
+            ".dart": "dart"
+          },
+          "initializationOptions": {
+            "suggestFromUnimportedLibraries": true,
+            "onlyAnalyzeProjectsWithOpenFiles": false,
+            "closingLabels": false,
+            "outline": false,
+            "flutterOutline": false,
+            "allowOpenUri": false
+          }
+        }
+      }
+    }
+  ]
+}
